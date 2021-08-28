@@ -7,7 +7,7 @@ function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState('')
   const [tweetImage, setTweetImage] = useState('')
 
-  const sendTweet = e => {
+  const sendTweet = (e) => {
     e.preventDefault()
 
     db.collection('posts').add({
@@ -18,6 +18,9 @@ function TweetBox() {
       image: tweetImage,
       avatar: 'https://pbs.twimg.com/profile_images/1420572812193026050/W8boMMDn_normal.jpg'
     })
+
+    setTweetMessage('')
+    setTweetImage('')
   }
 
   return (
@@ -33,7 +36,7 @@ function TweetBox() {
           />
         </div>
         <input
-           onChange={e => setTweetImage(e.target.value)}
+          onChange={e => setTweetImage(e.target.value)}
           value={tweetImage}
           className='tweetBox__imageInput' 
           placeholder='Optional: Enter image URL' 
